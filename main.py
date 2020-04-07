@@ -1,5 +1,7 @@
 import pandas as pd
-import Local
+import time
+import matplotlib.pyplot as plt
+from Local import Local
 
 
 def lerArquivo():
@@ -11,7 +13,7 @@ def lerArquivo():
          'CO_T2_X', 'CO_T2_Y',
          'CO_T3_X', 'CO_T3_Y',
          'ID_PESS']
-        ]
+    ]
 
 
 def inserirDict(coords: 'dict', x: 'str', y: 'str', id_pess: 'int'):
@@ -34,18 +36,61 @@ def processar():
         inserirDict(coords, '{0}'.format(linha['CO_D_X']), '{0}'.format(linha['CO_D_Y']), id_pess)
 
         if linha['CO_T1_X'] != 0 and linha['CO_T1_Y'] != 0:
-            print('entrou 1')
             inserirDict(coords, '{0}'.format(linha['CO_T1_X']), '{0}'.format(linha['CO_T1_Y']), id_pess)
 
         if linha['CO_T2_X'] != 0 and linha['CO_T2_Y'] != 0:
-            print('entrou 2')
             inserirDict(coords, '{0}'.format(linha['CO_T2_X']), '{0}'.format(linha['CO_T2_Y']), id_pess)
 
         if linha['CO_T3_X'] != 0 and linha['CO_T3_Y'] != 0:
-            print('entrou 3')
             inserirDict(coords, '{0}'.format(linha['CO_T3_X']), '{0}'.format(linha['CO_T3_Y']), id_pess)
-    print(coords)
+
+    locais = []
+    freq_max = 0
+    for x in coords.keys():
+        for y in coords[x].keys():
+            local = Local(int(x), int(y), coords[x][y])
+            locais.append(local)
+            if len(local.getFrequentadores()) > freq_max:
+                freq_max = len(local.getFrequentadores())
+
+    # eixo y = [1, 2, 3, 4, ..., n]
+    # eixo x = [0, 0, 0, 0, ..., 0]
+
+    eixos = {}
+    for i in range(1, freq_max+1):
+        eixos[i] = 0
+
+    for local in locais:
+        chave = len(local.getFrequentadores())
+        eixos[chave] += 1
+
+    eixos = {x: y for x, y in eixos.items() if y != 0}
+
+    eixo_y = eixos.values()     # n LUGARES
+    eixo_x = eixos.keys()       # FREQUENTADOS por m pessoas
+
+    print(eixo_x)
+    print(eixo_y)
+
+    plt.figure(figsize=(15.0, 5.2))
+    plt.bar(x=[i for i in range(1, len(eixo_x)+1)], height=eixo_y, log=True)
+    plt.xticks([i for i in range(1, len(eixo_x)+1)], labels=eixo_x, rotation='vertical')
+    plt.title("RELAÇÃO ENTRE FREQUENTADORES E LUGARES FREQUENTADOS")
+    plt.xlabel("Nro de frequentadores")
+    plt.ylabel("Qtd de lugares")
+
+    '''
+    plt.tick_params(
+        axis='x',       # changes apply to the x-axis
+        which='both',   # both major and minor ticks are affected
+        bottom=False,   # ticks along the bottom edge are off
+        top=False,      # ticks along the top edge are off
+        labelbottom=False)  # labels along the bottom edge are off
+    '''
+    plt.savefig("./fig.png")
 
 
 if __name__ == '__main__':
+    start_time = time.time()
     processar()
+    print("--- Total execution time: %s minutes ---" % ((time.time() - start_time) / 60))
