@@ -1,5 +1,38 @@
 # Processando dados da pesquisa Origem Destino
 
+## Como rodar o programa
+
+**Requisitos:**
+
+- python 3
+- pip (gerenciador de pacotes)
+
+Por questões de compatibilidade, recomendamos instalar o `virtualenv`, basta executar o seguinte comando na pasta do projeto:
+
+```bash
+pip install virtualenv
+```
+
+Com o virtualenv instalado, execute:
+
+```bash
+virtualenv venv
+```
+
+E então instale os pacotes listados nos requerimentos:
+
+```bash
+pip install -r requirements.txt
+```
+
+Uma vez que tudo está instalado, basta rodar o programa com o comando
+
+```bash
+python main.py
+```
+
+> **Atenção:** Em alguns sistemas em que tanto o pyhton 2 quanto o python 3 estão instalados, os comandos `python` e `pip` devem ser substituídos respectivamente por `python3` e `pip3`
+
 ## Introdução ao Problema
 
 ### COVID-19
