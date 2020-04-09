@@ -32,8 +32,12 @@ def processar():
     dados = lerArquivo()
     for index, linha in dados.iterrows():
         id_pess = linha['ID_PESS']
-        inserirDict(coords, '{0}'.format(linha['CO_O_X']), '{0}'.format(linha['CO_O_Y']), id_pess)
-        inserirDict(coords, '{0}'.format(linha['CO_D_X']), '{0}'.format(linha['CO_D_Y']), id_pess)
+
+        if linha['CO_O_X'] != 0 and linha['CO_O_Y'] != 0:
+            inserirDict(coords, '{0}'.format(linha['CO_O_X']), '{0}'.format(linha['CO_O_Y']), id_pess)
+
+        if linha['CO_D_X'] != 0 and linha['CO_D_Y'] != 0:
+            inserirDict(coords, '{0}'.format(linha['CO_D_X']), '{0}'.format(linha['CO_D_Y']), id_pess)
 
         if linha['CO_T1_X'] != 0 and linha['CO_T1_Y'] != 0:
             inserirDict(coords, '{0}'.format(linha['CO_T1_X']), '{0}'.format(linha['CO_T1_Y']), id_pess)
@@ -69,24 +73,13 @@ def processar():
     eixo_y = eixos.values()     # n LUGARES
     eixo_x = eixos.keys()       # FREQUENTADOS por m pessoas
 
-    print(eixo_x)
-    print(eixo_y)
-
-    plt.figure(figsize=(15.0, 5.2))
+    plt.figure(figsize=(21.0, 9))
     plt.bar(x=[i for i in range(1, len(eixo_x)+1)], height=eixo_y, log=True)
     plt.xticks([i for i in range(1, len(eixo_x)+1)], labels=eixo_x, rotation='vertical')
     plt.title("RELAÇÃO ENTRE FREQUENTADORES E LUGARES FREQUENTADOS")
     plt.xlabel("Nro de frequentadores")
     plt.ylabel("Qtd de lugares")
 
-    '''
-    plt.tick_params(
-        axis='x',       # changes apply to the x-axis
-        which='both',   # both major and minor ticks are affected
-        bottom=False,   # ticks along the bottom edge are off
-        top=False,      # ticks along the top edge are off
-        labelbottom=False)  # labels along the bottom edge are off
-    '''
     plt.savefig("./fig.png")
 
 
