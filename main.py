@@ -86,4 +86,4 @@ def processar():
 if __name__ == '__main__':
     start_time = time.time()
     processar()
-    print("--- Total execution time: %s minutes ---" % ((time.time() - start_time) / 60))
+    print("--- Total execution time: %s seconds ---" % ((time.time() - start_time)))
