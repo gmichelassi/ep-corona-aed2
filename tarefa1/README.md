@@ -1,5 +1,38 @@
 # Processando dados da pesquisa Origem Destino
 
+## Como rodar o programa
+
+**Requisitos:**
+
+- python 3
+- pip (gerenciador de pacotes)
+
+Por questões de compatibilidade, recomendamos instalar o `virtualenv`, basta executar o seguinte comando na pasta do projeto:
+
+```bash
+pip install virtualenv
+```
+
+Com o virtualenv instalado, execute:
+
+```bash
+virtualenv venv
+```
+
+E então instale os pacotes listados nos requerimentos:
+
+```bash
+pip install -r requirements.txt
+```
+
+Uma vez que tudo está instalado, basta rodar o programa com o comando
+
+```bash
+python main.py
+```
+
+> **Atenção:** Em alguns sistemas em que tanto o pyhton 2 quanto o python 3 estão instalados, os comandos `python` e `pip` devem ser substituídos respectivamente por `python3` e `pip3`
+
 ## Introdução ao Problema
 
 ### COVID-19
@@ -48,6 +81,61 @@ Os primeiros indicam as coordenadas do lugar, o segundo indica os ids das pessoa
 Além disso, construir um histograma do número de pessoas que frequentam cada lugar mencionado na pesquisa. 
 Ou seja, um gráfico cujo eixo x é a quantidade de lugares e o eixo y o número de pessoas que frequentam
 *(quantos lugares são frequentados por um único entrevistado, quantos são frequentados por 2, por 3 e assim por diante)*
+
+## Solução
+
+Decidimos usar a linguagem python pois existem bibliotecas específicas para processamento e plotagem de dados.
+
+Primeiramente utilizamos a biblioteca pandas, para carregar o arquivo `OD_2017.csv` em uma estrutura do pandas chamda `dataframe` e selecionamos apenas as colunas da tabela que nos interessam:
+
+- Coordenadas X e Y da Origem
+- Coordenadas X e Y do Destino
+- Coordenadas X e Y das Transferências
+- ID da Pessoa
+
+E então iteramos sobre as linhas da tabela para criar um `dicionário` (estrutura da linguagem, no formato chave valor), com o seguinte formato:
+
+```json
+{
+  "x1": {
+    "y1": [
+      "id1",
+      "id2"
+    ],
+    "y2": [
+      "id1",
+      "id3"
+    ]
+  }
+}
+```
+
+Com essa estrutura formada, podemos iteram sobre os seus itens e fazer uma lista de `Locais` (classe que criamos conforme a especificação da tarefa) e a partir dessa lista contamos o número de frequentadores por local
+
+Uma vez que temos todos os dados necessários, podemos plotar o gráfico com a biblioteca matplotlib:
+
+![Gráfico Gerado](fig.png)
+
+### Tempo de execução
+
+Em números absolutos, rodando em um computador com a seguinte configuração
+
+- **Sistema Operacional:** Ubuntu 18.04.4 64bits  
+- **Memória:** 3,6 GiB
+- **Processador:** Intel® Core™ i5-7200U CPU @ 2.50GHz × 4 
+- **Placa Gráfica:** Intel® HD Graphics 620 (Kaby Lake GT2)
+
+O tempo de execução é de aproximadamente 45 segundos
+
+Em nossos testes percebemos que a resolução do gráfico influencia bastante no tempo de execução
+
+Pensando em complexidade assintótica, em termos de número de entrevistados **`e`** e número de locais **`l`**, temos os seguintes passos:
+
+- Iteramos uma vez sobre a tabela da pesquisa, que tem **`e`** linhas para construir o dicionário mencionado
+- Iteramos sobre esse dicionário que contém os **`l`** locais
+- Iteramos sobre a lista de **`l`** locais para plotar o gráfico
+
+Então temos o tempo de **`e + 2l`**, mas em termos de complexidade podemos desprezar a constante **`2`**, então a complexidade é de **`e + l`** 
 
 ## Autores
 
