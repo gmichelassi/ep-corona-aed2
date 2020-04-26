@@ -5,7 +5,7 @@ from Local import Local
 
 
 def lerArquivo():
-    dados = pd.read_csv('OD_2017.csv')
+    dados = pd.read_csv('./tarefa1/OD_2017.csv')
     return dados[
         ['CO_O_X', 'CO_O_Y',
          'CO_D_X', 'CO_D_Y',
