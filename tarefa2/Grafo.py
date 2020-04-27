@@ -1,7 +1,7 @@
 class Grafo(object):
     def inicializar(self):
-         for v in range(self.__V + 1):
-             self.__adj.append([])
+        for v in range(self.__V + 1):
+            self.__adj.append([])
 
     def __init__(self, path='', V=5):
         self.__adj = []

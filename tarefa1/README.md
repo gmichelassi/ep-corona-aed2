@@ -1,38 +1,5 @@
 # Processando dados da pesquisa Origem Destino
 
-## Como rodar o programa
-
-**Requisitos:**
-
-- python 3
-- pip (gerenciador de pacotes)
-
-Por questões de compatibilidade, recomendamos instalar o `virtualenv`, basta executar o seguinte comando na pasta do projeto:
-
-```bash
-pip install virtualenv
-```
-
-Com o virtualenv instalado, execute:
-
-```bash
-virtualenv venv
-```
-
-E então instale os pacotes listados nos requerimentos:
-
-```bash
-pip install -r requirements.txt
-```
-
-Uma vez que tudo está instalado, basta rodar o programa com o comando
-
-```bash
-python main.py
-```
-
-> **Atenção:** Em alguns sistemas em que tanto o pyhton 2 quanto o python 3 estão instalados, os comandos `python` e `pip` devem ser substituídos respectivamente por `python3` e `pip3`
-
 ## Introdução ao Problema
 
 ### COVID-19
@@ -136,13 +103,3 @@ Pensando em complexidade assintótica, em termos de número de entrevistados **`
 - Iteramos sobre a lista de **`l`** locais para plotar o gráfico
 
 Então temos o tempo de **`e + 2l`**, mas em termos de complexidade podemos desprezar a constante **`2`**, então a complexidade é de **`e + l`** 
-
-## Autores
-
-Esse é um trabalho desenvolvido pelos alunos
-- [Ana Beatriz Machado Cuelbas](https://github.com/anabcuelbas)
-- [Gabriel de Castro Michelassi](https://github.com/gmichelassi)
-- [Guilherme Balog Gardino](https://github.com/GuilhermeBalog)
-- [Laura Zitelli de Souza](https://github.com/LauraZitelli)
-
-Como trabalho proposto pelo professor [Márcio Moretto Ribeiro](http://lattes.cnpq.br/2153927915438535)

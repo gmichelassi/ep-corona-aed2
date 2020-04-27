@@ -55,9 +55,9 @@ Então temos o tempo de **`e + 2l`**, mas em termos de complexidade podemos desp
 
 ## Alunos
 
-- [Ana Beatriz Machado Cuelbas](https://github.com/anabcuelbas)
-- [Gabriel de Castro Michelassi](https://github.com/gmichelassi)
-- [Guilherme Balog Gardino](https://github.com/GuilhermeBalog)
-- [Laura Zitelli de Souza](https://github.com/LauraZitelli)
+- [Ana Beatriz Machado Cuelbas](https://github.com/anabcuelbas) - 11207881
+- [Gabriel de Castro Michelassi](https://github.com/gmichelassi) - 11208162
+- [Guilherme Balog Gardino](https://github.com/GuilhermeBalog) - 11270649
+- [Laura Zitelli de Souza](https://github.com/LauraZitelli) - 11207814
 
 O repositório está disponivel no GitHub em [https://github.com/gmichelassi/ep-corona-aed2](https://github.com/gmichelassi/ep-corona-aed2)

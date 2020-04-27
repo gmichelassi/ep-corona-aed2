@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 
 def gerarGrafo():
-    grafo = Grafo('./tarefa2/OD_graph.txt')
+    grafo = Grafo('./OD_graph.txt')
 
     eixos = {}
     for i in range(grafo.maxDegree() + 1):
@@ -25,7 +25,7 @@ def gerarGrafo():
     plt.xlabel("Grau dos vértices")
     plt.ylabel("Qtd de vértices")
 
-    plt.savefig("./tarefa2/fig.png")
+    plt.savefig("./fig.png")
 
 
 if __name__ == '__main__':
