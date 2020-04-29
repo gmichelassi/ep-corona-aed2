@@ -4,6 +4,7 @@ Trabalhos desenvolvidos para a disciplina AED2, com o objetivo de aplicar os con
 
 - [Processando dados da pesquisa Origem Destino](/tarefa1)
 - [Construindo um grafo de encontros presenciais da RMSP](/tarefa2)
+- [Componentes conexas do grafo dos encontros](/tarefa3)
 
 ## Como rodar os programas
 
