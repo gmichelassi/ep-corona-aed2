@@ -4,6 +4,7 @@ class ComponentesConexas(object):
         self.__marked = []
         self.__id = []
 
+        # inicializar
         for i in range(grafo.getV()):
             self.__id.append(-1)
             self.__marked.append(False)
