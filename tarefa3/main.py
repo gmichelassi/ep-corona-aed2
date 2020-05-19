@@ -12,17 +12,14 @@ def analisaComponentes():
     print(str(numberOfComponents) + " componentes")
     
     componentes = []
-    # inicializa
     for i in range(numberOfComponents):
         componentes.append([])
-        
-    # preenche
+
     for v in range(grafo.getV()):
         componenteDeV = cc.getId(v)
         componentes[componenteDeV].append(v)
 
     tabela = {}
-
     for i in range(numberOfComponents):
         size = len(componentes[i])
 
@@ -36,8 +33,8 @@ def analisaComponentes():
         tamanho = chave
         qtdComponentes = tabela[chave]
         print(f'{qtdComponentes:^5} componentes com {tamanho:^4} vertices')
-
     print('-' * 35)
+
 
 if __name__ == '__main__':
     analisaComponentes()
