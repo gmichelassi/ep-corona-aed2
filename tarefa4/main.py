@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import time
 import numpy as np
 
-
+a
 def diametro():
     grafo = Grafo('traducao3.txt')
 

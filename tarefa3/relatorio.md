@@ -1,4 +1,4 @@
-# Componentes conexas do grafo dos encontros
+# Componenteas conexas do grafo dos encontros
 
 Escolhemos o **cenário 3**, em que apenas serviços essenciais estão abertos: incluem apenas a casa, trajetos com finalidade de saúde e assuntos pessoais.
 
