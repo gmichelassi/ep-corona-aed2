@@ -6,25 +6,50 @@ class Transmissao(object):
         self.__c = c
         self.__r = r
         
-        self.__momentos = []
+        self.__passos = []
 
         # Inicializar
         for i in range(grafo.getV()):
             self.__status.append("S")
 
         # Paciente zero
-        
-        vertice_inicial = 178
-        self.__status[vertice_inicial] = "I"
-        self.__dfs(grafo, vertice_inicial)
-
+        vertice_infectado = 0
+        self.__status[vertice_infectado] = "I"
         
 
-    def __dfs(self, grafo, v):        
+        quantidades = { 'S': grafo.getV() - 1, 'I': 1, 'R': 0 }      
+        self.__passos.append(quantidades.copy())
+        # print(f'Passos {self.__passos}')
+        # print(f'passos[{0}]:{quantidades} ', end=" -->> ")
+        # print(f'passos[{0}]:{self.__passos[0]} ')
+
+        cont = 0
+        while quantidades['I'] != 0 and cont < 10000:
+            if self.__status[vertice_infectado] != "I":
+                print(f'\n Indivíduo {vertice_infectado} foi curado...')
+                print('Mudando vertice infectado...\n')
+                for i in range(len(self.__status)):
+                    if self.__status[i] == "I":
+                        vertice_infectado = i
+                        break
+            
+            quantidades = self.__dfs(grafo, vertice_infectado, quantidades)
+            # self.__passos.append(quantidades.copy())
+            # print(f'passos[{cont + 1}]:{quantidades} ', end=" -->> ")
+            # print(f'passos[{cont + 1}]:{self.__passos[cont + 1]} ')
+            cont += 1
+
+        print(f"\nwhile rodou {cont} vezes")
+
+
+    def __dfs(self, grafo, v, quantidades):        
         if self.__status[v] == "I":
             prob_recuperacao = random() # Já sorteia entre 0 e 1 por padrão
-            if prob_recuperacao <= self.__r:
+            if prob_recuperacao < self.__r:
                 self.__status[v] = "R"
+                print(f'{v} se recuperou')
+                quantidades['I'] -= 1
+                quantidades['R'] += 1
             else:
                 for w in grafo.getAdj(v):
                     if self.__status[w] == "S":
@@ -32,20 +57,16 @@ class Transmissao(object):
 
                         if prob_contagio <= self.__c:
                             self.__status[w] = "I"
-                            self.__dfs(grafo, w)
+                            quantidades['I'] += 1
+                            quantidades['S'] -= 1
+                            quantidades = self.__dfs(grafo, w, quantidades)
         
-        quantidades = {'S': 0, 'I': 0, 'R': 0}
-        for s in self.__status:
-            quantidades[s] += 1
-
-        self.__momentos.append(quantidades)
+        self.__passos.append(quantidades.copy())
+        return quantidades
 
     
     def getStatus(self):
         return self.__status
 
-    def getMomentos(self):
-        return self.__momentos
-
     def getPassos(self):
-        return len(self.__momentos)
+        return self.__passos
