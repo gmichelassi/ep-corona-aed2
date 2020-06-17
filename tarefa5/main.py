@@ -29,7 +29,7 @@ def modeloContagio(c=0.9, r=0.4):
     
     ax.set_ylabel('Nº de Pessoas')
     ax.set_xlabel('Nº de Passos')
-    ax.set_title('Relação Recuperados x Infectados')
+    ax.set_title(f'Relação Recuperados x Infectados\nc = {c}, r = {r}')
     ax.legend()
 
     plt.savefig(f"./fig_{c}_{r}.png")
