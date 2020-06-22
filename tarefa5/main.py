@@ -18,7 +18,7 @@ def modeloContagio(c=0.9, r=0.4):
     # print(n_passos)
     cont = 0
     for passo in passos:
-        print(f"Tamanho das barras: {passo['I'] + passo['R']}")
+        # print(f"Tamanho das barras: {passo['I'] + passo['R']}")
         cont += 1
         if cont > 10:
             break
@@ -32,8 +32,8 @@ def modeloContagio(c=0.9, r=0.4):
         recuperados.append(passos[i]['R'])
 
     width = 0.35
-
-    fig, ax = plt.subplots(figsize=(21.0, 10.0))
+    print("Gerando gráfico...")
+    fig, ax = plt.subplots(figsize=(30.0, 10.0))
 
     ax.bar(labels, infectados, width, label='Infectados')
     ax.bar(labels, recuperados, width, bottom=infectados, label='Recuperados')

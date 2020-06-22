@@ -24,10 +24,8 @@ class Transmissao(object):
         # print(f'passos[{0}]:{self.__passos[0]} ')
 
         cont = 0
-        while quantidades['I'] != 0 and cont < 10000:
+        while quantidades['I'] != 0:
             if self.__status[vertice_infectado] != "I":
-                print(f'\n Indivíduo {vertice_infectado} foi curado...')
-                print('Mudando vertice infectado...\n')
                 for i in range(len(self.__status)):
                     if self.__status[i] == "I":
                         vertice_infectado = i
@@ -47,7 +45,7 @@ class Transmissao(object):
             prob_recuperacao = random() # Já sorteia entre 0 e 1 por padrão
             if prob_recuperacao < self.__r:
                 self.__status[v] = "R"
-                print(f'{v} se recuperou')
+#                print(f'{v} se recuperou')
                 quantidades['I'] -= 1
                 quantidades['R'] += 1
             else:
