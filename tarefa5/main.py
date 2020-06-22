@@ -38,9 +38,9 @@ def modeloContagio(c=0.9, r=0.4):
     ax.bar(labels, infectados, width, label='Infectados')
     ax.bar(labels, recuperados, width, bottom=infectados, label='Recuperados')
     
-    ax.set_ylabel('Nº de Pessoas')
-    ax.set_xlabel('Nº de Passos')
-    ax.set_title(f'Relação Recuperados x Infectados\nc = {c}, r = {r}')
+    ax.set_ylabel('Nº de Pessoas', fontsize=20)
+    ax.set_xlabel('Nº de Passos', fontsize=20)
+    ax.set_title(f'Relação Recuperados x Infectados\nc = {c}, r = {r}', fontsize=20)
     ax.legend()
 
     plt.savefig(f"./fig_{c}_{r}.png")
@@ -48,11 +48,11 @@ def modeloContagio(c=0.9, r=0.4):
 
 if __name__ == "__main__":
     sys.setrecursionlimit(2500)
-    # c, r = 0.8, 0.2
-    # modeloContagio(c, r)
+    c, r = 0.5, 0.4
+    modeloContagio(c, r)
 
     c, r = 0.7, 0.1
     modeloContagio(c, r)
 
-    # c, r = 0.7, 0.6
-    # modeloContagio(c, r)
+    c, r = 0.9, 0.2
+    modeloContagio(c, r)
