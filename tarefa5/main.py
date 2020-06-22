@@ -38,10 +38,13 @@ def modeloContagio(c=0.9, r=0.4):
     ax.bar(labels, infectados, width, label='Infectados')
     ax.bar(labels, recuperados, width, bottom=infectados, label='Recuperados')
     
-    ax.set_ylabel('Nº de Pessoas', fontsize=20)
-    ax.set_xlabel('Nº de Passos', fontsize=20)
-    ax.set_title(f'Relação Recuperados x Infectados\nc = {c}, r = {r}', fontsize=20)
-    ax.legend()
+    ax.set_ylabel('Nº de Pessoas', fontsize=25)
+    ax.set_xlabel('Nº de Passos', fontsize=25)
+    ax.set_title(f'Relação Recuperados x Infectados\nc = {c}, r = {r}', fontsize=25)
+    ax.legend(fontsize=25)
+
+    plt.xticks(fontsize=20)
+    plt.yticks(fontsize=20)
 
     plt.savefig(f"./fig_{c}_{r}.png")
 
@@ -51,8 +54,8 @@ if __name__ == "__main__":
     c, r = 0.5, 0.4
     modeloContagio(c, r)
 
-    c, r = 0.7, 0.1
-    modeloContagio(c, r)
+    # c, r = 0.7, 0.1
+    # modeloContagio(c, r)
 
-    c, r = 0.9, 0.2
-    modeloContagio(c, r)
+    # c, r = 0.9, 0.2
+    # modeloContagio(c, r)
